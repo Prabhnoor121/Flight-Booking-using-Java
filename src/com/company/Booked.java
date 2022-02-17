@@ -20,6 +20,8 @@ public class Booked {
         pnr=PNR;
     }
 
+    jhbjhbj
+
 //    public boolean equals(Object obj)
 //    {
 //        SRC_DEST other= (SRC_DEST) obj;
