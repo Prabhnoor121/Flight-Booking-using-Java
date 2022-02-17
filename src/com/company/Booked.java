@@ -20,7 +20,6 @@ public class Booked {
         pnr=PNR;
     }
 
-    jhbjhbjvhgvhgvgvgvhvhghgvhgvhgvhgvhgvhgvhgvh
 
 //    public boolean equals(Object obj)
 //    {
