@@ -29,6 +29,64 @@ public class Main extends SRC_DEST {
         return user;
     }
 
+    public void add_flight(SRC_DEST user){
+        int price=0;
+        System.out.println("Enter the price of the ticket");
+        Scanner d=new Scanner(System.in);
+        price=d.nextInt();
+        mp.put(user,price);
+        System.out.println("This Flight is successfully added");
+    }
+
+    public void remove_flight(SRC_DEST user){
+        mp.remove(user);
+        System.out.println("This Flight is successfully removed");
+    }
+
+    public void change_src(SRC_DEST user,String ss){
+        int pr=mp.get(user);
+        user.src=ss;
+        mp.put(user,pr);
+        System.out.println("Source station updated to "+ss);
+    }
+
+    public void change_dst(SRC_DEST user,String sss){
+        int pr=mp.get(user);
+        user.dst=sss;
+        mp.put(user,pr);
+        System.out.println("Destination station updated to "+sss);
+    }
+
+    public void change_price(SRC_DEST user,int price){
+        mp.put(user,price);
+        System.out.println("Price updated to "+price);
+    }
+
+    public void modify_flight(SRC_DEST user){
+        System.out.println("Enter 7 for changing source, 8 for changing destination and 9 for changing flight price");
+        Scanner c=new Scanner(System.in);
+        int f=c.nextInt();
+        switch(f){
+            case 7:
+                Scanner hg=new Scanner(System.in);
+                String ss=hg.next();
+                change_src(user,ss);
+                break;
+            case 8:
+                Scanner hgg=new Scanner(System.in);
+                String sss=hgg.next();
+                change_dst(user,sss);
+                break;
+            case 9:
+                Scanner hggg=new Scanner(System.in);
+                int price=hggg.nextInt();
+                change_price(user,price);
+                break;
+            default:
+                break;
+        }
+    }
+
     public boolean flightAvailableOrNot(SRC_DEST user){
         //System.out.println(user.src+" "+ user.dst+" "+user.mp);
         if(mp.containsKey(user)){
@@ -110,6 +168,11 @@ public class Main extends SRC_DEST {
         }
     }
 
+    public void print(){
+        for(SRC_DEST key:mp.keySet()){
+            System.out.println("Source: "+key.src +", Destination: " +key.dst +", Price: "+mp.get(key));
+        }
+    }
 
 
     public static void main(String[] args) {
@@ -129,6 +192,8 @@ public class Main extends SRC_DEST {
         mp.put(obj5,5000);
         mp.put(obj6,6000);
 
+        System.out.println("enter ");
+
         System.out.println("Choose 1 for Searching Flights, 2 for Booking Flight ticket and 3 for Checking Booking Status and 4 for exit");
         Scanner scanner=new Scanner(System.in);
         int choice=scanner.nextInt();
@@ -146,13 +211,28 @@ public class Main extends SRC_DEST {
                     Main test3=new Main();
                     test3.Check_Status();
                     break;
+                case 4:
+                    Main test4=new Main();
+                    test4.add_flight(test4.get_src_dst());
+                    break;
+                case 5:
+                    Main test5=new Main();
+                    test5.remove_flight(test5.get_src_dst());
+                    break;
+                case 6:
+                    Main test6=new Main();
+                    test6.modify_flight(test6.get_src_dst());
+                    break;
+                case 7:
+                    Main test7=new Main();
+                    test7.print();
                 default:
                     break;
             }
             System.out.println("Choose 1 for Searching Flights, 2 for Booking Flight ticket and 3 for Checking Booking Status and 4 for exit");
             //Scanner scanner=new Scanner(System.in);
             choice=scanner.nextInt();
-        }while(choice!=4);
+        }while(choice<=6);
         //System.out.println("after searching");
     }
 }
